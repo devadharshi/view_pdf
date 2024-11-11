@@ -15,7 +15,7 @@ get involved, visit:
 
 To get a local copy of the current code, clone it using git:
 
-    $ git clone https://github.com/sherylynn/pdf-sync.git
+    $ git clone https://github.com/devadharshi/pdf-sync.git
     $ cd pdf-sync
 
 Next, install Node.js via the [official package](https://nodejs.org) or via
@@ -27,7 +27,7 @@ If everything worked out, install all dependencies for pdf-sync:
 
     $ npm install
 
-If you want to SYNC your reading process,  install all dependencies for pouchDB server, and just run
+If we want to SYNC your reading process,  install all dependencies for pouchDB server, and just run
 
     $ npm run db_level
 
@@ -36,7 +36,7 @@ PDF files using a `file://` URL. Run:
 
     $ npm start
 
-and then you can open:
+and then we can open:
 
 + http://localhost:9000/pdf/web/index.html
 
