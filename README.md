@@ -7,7 +7,7 @@ pdf-sync is add sync to pdf.js
 pdf-sync is an open source project and always looking for more contributors. To
 get involved, visit:
 
-+ [Projects](https://github.com//sherylynn//pdf-sync)
++ [Projects]https://github.com/devadharshi/view_pdf/edit/main/README.md
 
 
 
