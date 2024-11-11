@@ -1,0 +1,191 @@
+{
+  "name": "pdf-sync",
+  "version": "0.0.15",
+  "main": "main.js",
+  "author": "sherylynn",
+  "email": "352281674@qq.com",
+  "description": "pdf sync viewer",
+  "devDependencies": {
+    "@types/pouchdb": "^6.3.2",
+    "acorn": "^5.7.3",
+    "autoprefixer": "^8.6.5",
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "blueimp-md5": "^2.10.0",
+    "concurrently": "^4.0.1",
+    "core-js": "^2.5.7",
+    "electron": "^2.0.12",
+    "electron-builder": "^21.2.0",
+    "escodegen": "^1.11.0",
+    "eslint": "^5.6.1",
+    "eslint-plugin-mozilla": "^0.14.0",
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "eslint-plugin-unicorn": "^4.0.3",
+    "fancy-log": "^1.3.2",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-connect": "^5.6.1",
+    "gulp-markdown-pdf": "^6.0.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-transform": "^3.0.5",
+    "gulp-zip": "^4.2.0",
+    "http-proxy-middleware": "^0.19.0",
+    "jasmine": "^3.2.0",
+    "jasmine-core": "^3.2.1",
+    "jsdoc": "^3.5.5",
+    "merge-stream": "^1.0.1",
+    "mkdirp": "^0.5.1",
+    "natives": "^1.1.6",
+    "node-ensure": "^0.0.0",
+    "pouchdb": "^7.1.1",
+    "pouchdb-authentication": "^1.1.3",
+    "pouchdb-server": "^4.2.0",
+    "rimraf": "^2.6.2",
+    "streamqueue": "^1.1.2",
+    "systemjs": "^0.21.5",
+    "systemjs-plugin-babel": "^0.0.25",
+    "ttest": "^1.1.0",
+    "typogr": "^0.6.8",
+    "uglify-es": "^3.3.9",
+    "vinyl": "^2.2.0",
+    "vinyl-fs": "^3.0.3",
+    "webpack": "^4.20.2",
+    "webpack-stream": "^4.0.3",
+    "wintersmith": "^2.4.1",
+    "yargs": "^11.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sherylynn/pdf-sync.git"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "gulp app",
+    "server": "gulp server",
+    "db_sql": "pouchdb-server --port 3456 --host 0.0.0.0 --sqlite --dir ./db --config ./db/config.json",
+    "db_level": "pouchdb-server --port 3456 --host 0.0.0.0 --dir ./db --config ./db/config.json",
+    "app_test": "electron ./ --debug",
+    "app": "electron ./ ",
+    "dev": "concurrently \"npm start\" \"npm run app_test\" ",
+    "dist_all": "electron-builder -mwl ",
+    "dist_win": "npm run prebuild && electron-builder --win ",
+    "installtest": "node ./tools/install_win.js",
+    "install_win": "npm run dist_win && node ./tools/install_win.js",
+    "dist_mac": "npm run prebuild && electron-builder --mac ",
+    "dist_arm": "electron-builder --linux --armv7l",
+    "dist_deb": "electron-builder --linux ",
+    "android": "gulp android",
+    "build": "gulp generic",
+    "prebuild_max": "gulp electron-prebuild --max-old-space-size=8192",
+    "prebuild": "gulp electron-prebuild",
+    "pub_ser": "gulp pub_ser",
+    "pub_win": "npm run prebuild && build --win --publish always",
+    "pub_all": "npm run prebuild && build --mac --win --linux --publish always",
+    "test": "gulp lint unittestcli externaltest"
+  },
+  "dependencies": {
+    "electron-log": "^2.2.17",
+    "electron-updater": "^4.2.0"
+  },
+  "build": {
+    "fileAssociations": [
+      {
+        "ext": "pdf",
+        "description": "PDF file extension",
+        "name": "PDF",
+        "role": "Editor"
+      }
+    ],
+    "appId": "com.sherylynn.pdf-sync",
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "armv7l"
+          ]
+        }
+      ],
+      "maintainer": "sherylynn"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "vPrefixedTagName": true,
+        "private": false,
+        "owner": "sherylynn",
+        "releaseType": "release"
+      },
+      {
+        "provider": "generic",
+        "url": "your_url"
+      }
+    ],
+    "directories": {
+      "buildResources": "./",
+      "output": "./build/app"
+    },
+    "files": [
+      "**/*",
+      "!android",
+      "!log.txt",
+      "!test",
+      "!src",
+      "!build/app",
+      "!tmp",
+      "!db",
+      "!docs",
+      "!examples",
+      "!extenxions",
+      "!external",
+      "!l10n",
+      "!src",
+      "!test",
+      "!web",
+      "!local_trans/.vscode",
+      "!local_trans/test",
+      "!local_trans/截图"
+    ]
+  }
+}

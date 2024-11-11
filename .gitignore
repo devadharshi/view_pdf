@@ -1,0 +1,33 @@
+*~
+local.mk
+build/
+tags
+.DS_Store
+Makefile
+node_modules/
+package-lock.json
+examples/node/svgdump/
+examples/node/pdf2png/*.png
+db/
+log.txt
+config.js
+
+# cordova
+android/build
+android/.gradle
+android/.idea
+android/local.properties
+android/app/src/main/assets/
+
+# apk
+android/gradle.properties
+android/app/build
+android/app/release/*
+# android/app/pdfsync.jks
+.update
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+android/keystores/debug.keystore
