@@ -9,7 +9,6 @@ get involved, visit:
 
 + [Projects](https://github.com//sherylynn//pdf-sync)
 
-Feel free to stop by #pdfjs on irc.mozilla.org for questions or guidance.
 
 
 ## Getting the Code
